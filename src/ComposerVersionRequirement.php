@@ -39,10 +39,10 @@ class ComposerVersionRequirement implements PluginInterface, EventSubscriberInte
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    return [
+    return array(
       ScriptEvents::PRE_INSTALL_CMD => 'checkComposerVersion',
       ScriptEvents::PRE_UPDATE_CMD => 'checkComposerVersion',
-    ];
+    );
   }
 
   /**
@@ -122,7 +122,7 @@ class ComposerVersionRequirement implements PluginInterface, EventSubscriberInte
   public function validate() {
     return function ($answer) {
       $normalized = strtolower($answer);
-      if (!in_array($normalized, ['y', 'n', '1'], true)) {
+      if (!in_array($normalized, array('y', 'n', '1'), true)) {
         throw new \RuntimeException("Enter 'y' or 'n'");
       }
 
